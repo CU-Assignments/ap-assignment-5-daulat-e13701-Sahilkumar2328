@@ -1,0 +1,25 @@
+class Solution {
+    private:
+        void inorder(TreeNode* root, vector<int>&a){
+            if(root==nullptr){
+                return;
+            }
+            
+            // traverse left subtree
+            inorder(root->left, a);
+            // store value of root on which we are standing
+            a.push_back(root->val);
+            // process the right subtree
+            inorder(root->right,a);
+        }
+
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        // creating a vector of int
+        vector<int>a;
+        //calling inorder traversal
+        inorder(root, a);
+        //returning the ans..
+        return a[k-1];
+    }
+};
